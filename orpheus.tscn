@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://bva08y5b5nvdb"]
+
+[ext_resource type="PackedScene" uid="uid://dk0pmgc7v6vm6" path="res://Character_O.tscn" id="1_r2033"]
+[ext_resource type="Texture2D" uid="uid://dsr4x7ukw1ruv" path="res://Screenshot 2024-10-22 002419.png" id="2_djcpi"]
+
+[sub_resource type="Gradient" id="Gradient_7488d"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.727273)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8ww3t"]
+gradient = SubResource("Gradient_7488d")
+fill = 1
+fill_from = Vector2(0.527523, 0.509174)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1f1x"]
+size = Vector2(159, 160)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1152, 648)
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.640519, 0.501918, 0, 1)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.775063, 0.775063, 0.775063, 1)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_r2033")]
+position = Vector2(13, 554)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+zoom = Vector2(8.895, 8.895)
+
+[node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D"]
+position = Vector2(5, 0.999989)
+scale = Vector2(0.953125, 0.9375)
+color = Color(1, 0.984314, 0, 1)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_8ww3t")
+
+[node name="Timer" type="Timer" parent="CharacterBody2D"]
+wait_time = 20.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(41.51, 618.895)
+scale = Vector2(0.535, 0.361)
+
+[node name="Screenshot2024-10-22002419" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(1.62245, 0)
+scale = Vector2(1, 1)
+texture = ExtResource("2_djcpi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1.62245, 0)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_f1f1x")
